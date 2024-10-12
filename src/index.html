@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Life</title>
+    <link rel="icon" type="image/x-icon" href="public/icons/favicon.svg">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar_info">
+            <span class="top-bar_address">
+                <img src="public/icons/top-bar/location-icon.svg" alt="Location Icon" class="top-bar_icon">
+                Kyiv, 9 Khreshchatyk St.
+            </span>
+            <span class="top-bar_schedule">
+                <img src="public/icons/top-bar/clock-icon.svg" alt="Clock Icon" class="top-bar_icon">
+                8:30 AM – 9:00 PM, no days off
+            </span>
+        </div>
+    </div>
+
+    <header class="header"> 
+        <a class="logo" href="/">
+            <img src="public/images/logo.svg" alt="Pet Life Logo" class="logo-image">
+        </a>
+        <nav class="menu">
+            <ul class="menu-list">
+                <li class="menu-item"><a href="index.html" class="menu-link">Main</a></li>
+                <li class="menu-item"><a href="blog.html" class="menu-link">Blog</a></li>
+                <li class="menu-item"><a href="services.html" class="menu-link">Services</a></li>
+                <li class="menu-item"><a href="special-offers.html" class="menu-link">Special Offers</a></li>
+                <li class="menu-item"><a href="prices.html" class="menu-link">Prices</a></li>
+                <li class="menu-item"><a href="contacts.html" class="menu-link">Contacts</a></li>
+            </ul>
+        </nav>
+        <button class="nav-button blue-button">Login</button>
+    
+        <div class="burger-menu mobile">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </div>
+    </header> 
+
+    <main class="hero-section">
+        <div class="hero-content">
+            <h2 class="hero-subtitle extrabold-txt light-blue">YOUR TRUSTED VETERINARY CLINIC</h2>
+            <h1 class="hero-title extrabold-txt blue">PET LIFE</h1>
+            <p class="hero-text">Caring for your pets with love and expertise</p>
+            <button class="appointment button">
+                <img src="public/icons/appointment-icon.svg" alt="Calendar Icon" class="button-icon">
+                Book an Appointment
+            </button>
+        </div>
+        <div class="hero-image">
+            <img src="public/images/hero-banner/hero.png" alt="Dog">
+        </div>
+    </main>    
+
+    <section id="login" class="auth-section">
+        <div class="auth-form">
+            <a href="/" class="logo-small">
+                <img src="public/images/logo-small.svg" alt="Pet Life Logo" class="logo-image">
+            </a>
+            <h2 class="auth-title">Log in to your account</h2>
+            <form>
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="auth-button blue-button">Login</button>
+                <p>Don’t have an account? <a href="#register"><span class="blue">Register</span></a></p>
+            </form>
+        </div>
+    </section>
+    
+    <section id="register" class="auth-section">
+        <div class="auth-form">
+            <a href="/" class="logo-small">
+                <img src="public/images/logo-small.svg" alt="Pet Life Logo" class="logo-image">
+            </a>
+            <h2 class="auth-title">Enter your information to create account</h2>
+            <form>
+                <div class="input-group">
+                    <label for="reg-username">Username</label>
+                    <input type="text" id="reg-username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="input-group">
+                    <label for="reg-password">Password</label>
+                    <input type="password" id="reg-password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="auth-button blue-button">Create Account</button>
+                <p>Already have an account? <a href="#login"><span class="blue">Log in</span></a></p>
+            </form>
+        </div>
+    </section>  
+    
+    <section id="my-profile" class="profile-section">
+        <div class="profile-header">
+            <h2 class="profile-title bold-txt blue">My Profile</h2>
+        </div>
+        <div class="visit-history">
+            <h3 class="visit-history_title bold-txt">Visit History</h3>
+            <div class="visit-history_content">
+                <div class="visit-history_filter">
+                    <button class="order-history_button blue">
+                        Online Order History
+                        <span class="arrow">→</span>
+                    </button>
+                </div>
+                <div class="order-history_details">
+                    <h4 class="order-history_title bold-txt">Online Order History</h4>
+                    <p class="service-type">Grooming</p>
+                    <p class="vet-name bold-txt blue">Oleksandra Kovalenko</p>
+                    <div class="appointment-info">
+                        <span class="status-badge blue">Scheduled</span>
+                        <span class="appointment-time">
+                            <img src="public/icons/clock-icon.svg" alt="Clock Icon" class="profile-clock_icon"> 
+                            September 11, 12:30
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="history-dropdown">
+                <select id="history-period" name="history-period" class="blue">
+                    <option value="3-months">Past 3 months</option>
+                    <option value="6-months">Past 6 months</option>
+                    <option value="1-year">Past 1 year</option>
+                    <option value="all">Show all</option>
+                </select>
+            </div>
+        </div>
+    </section>    
+
+    <section id="appointment" class="appointment-section">
+        <div class="appointment-form_container">
+            <h2 class="appointment-title bold-txt blue">Book an Appointment</h2>
+            <form class="appointment-form">
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required>
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone-number">Phone Number</label>
+                    <input type="tel" id="phone-number" name="phone-number" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Service</label>
+                    <input type="text" id="service" name="service" placeholder="Enter the service you need" required>
+                </div>
+                <button type="submit" class="appointment-button blue-button">Continue</button>
+            </form>
+        </div>        
+        <div class="appointment-image">
+            <img src="public/images/appointment/dog-raising-paw.png" alt="Dog raising paw" class="appointment-dog_image">
+        </div>
+    </section>
+
+    <section id="service-error" class="error-section">
+        <div class="error-container">
+            <img src="public/icons/search-icon.svg" alt="Search Icon" class="error-icon">
+            <h3 class="error-title">Service not found</h3>
+            <p class="error-message">Please try again</p>
+            <button type="button" class="confirm-button blue-button">OK</button>
+        </div>
+    </section>
+    
+    <section id="select-vet" class="vet-selection">
+        <div class="vet-selection_header">
+            <h2 class="vet-service_title blue">Search for a service: <span class="service-name">Grooming</span></h2>
+            <h3 class="vet-selection_title bold-txt blue">Select a Veterinarian</h3>
+        </div>
+        <div class="vet-list">
+            <div class="vet-card">
+                <img src="public/images/select-vet/oleksandra-kovalenko.svg" alt="Oleksandra Kovalenko" class="vet-image">
+                <h4 class="vet-name bold-txt blue">Oleksandra Kovalenko</h4>
+                <p class="vet-specialty">Grooming Specialist for Small Dogs</p>
+            </div>
+            <div class="vet-card">
+                <img src="public/images/select-vet/nataliia-shevchenko.svg" alt="Nataliia Shevchenko" class="vet-image">
+                <h4 class="vet-name bold-txt blue">Nataliia Shevchenko</h4>
+                <p class="vet-specialty">Grooming Specialist for Cats and Exotic Pets</p>
+            </div>
+            <div class="vet-card">
+                <img src="public/images/select-vet/viktoriia-ivanchuk.svg" alt="Viktoriia Ivanchuk" class="vet-image">
+                <h4 class="vet-name bold-txt blue">Viktoriia Ivanchuk</h4>
+                <p class="vet-specialty">Grooming Specialist for Large Dogs</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="vet-info" class="vet-info_section">
+        <div class="vet-info_header">
+            <h2 class="vet-name bold-txt blue">Oleksandra Kovalenko</h2>
+            <span class="vet-specialty yellow-badge">Grooming Specialist for Small Dogs</span>
+        </div>
+        <div class="vet-experience">
+            <h3 class="experience-title bold-txt blue">Experience:</h3>
+            <p class="experience-details">
+                <img src="public/icons/circle-icon.svg" alt="Circle Icon" class="experience-icon">
+                2020 – present: Pet Life Veterinary Medicine Center
+            </p>
+        </div>
+        <div class="appointment-selection">
+            <div class="visit-date">
+                <h3 class="selection-title bold-txt blue">Select a visit date:</h3>
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button class="prev-month" aria-label="Previous Month">&lt;</button>
+                        <span class="calendar-month">September</span>
+                        <button class="next-month" aria-label="Next Month">&gt;</button>
+                    </div>
+                    <table class="calendar">
+                        <thead>
+                            <tr>
+                                <th>Sun</th>
+                                <th>Mon</th>
+                                <th>Tue</th>
+                                <th>Wed</th>
+                                <th>Thu</th>
+                                <th>Fri</th>
+                                <th>Sat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="disabled">26</td>
+                                <td class="disabled">27</td>
+                                <td class="disabled">28</td>
+                                <td class="disabled">29</td>
+                                <td class="disabled">30</td>
+                                <td class="disabled">31</td>
+                                <td class="date-slot">1</td>
+                            </tr>
+                            <tr>
+                                <td class="date-slot">2</td>
+                                <td class="date-slot">3</td>
+                                <td class="date-slot">4</td>
+                                <td class="date-slot">5</td>
+                                <td class="date-slot">6</td>
+                                <td class="date-slot">7</td>
+                                <td class="date-slot">8</td>
+                            </tr>
+                            <tr>
+                                <td class="date-slot">9</td>
+                                <td class="date-slot">10</td>
+                                <td class="date-slot selected">11</td>
+                                <td class="date-slot">12</td>
+                                <td class="date-slot">13</td>
+                                <td class="date-slot">14</td>
+                                <td class="date-slot">15</td>
+                            </tr>
+                            <tr>
+                                <td class="date-slot">16</td>
+                                <td class="date-slot">17</td>
+                                <td class="date-slot">18</td>
+                                <td class="date-slot">19</td>
+                                <td class="date-slot">20</td>
+                                <td class="date-slot">21</td>
+                                <td class="date-slot">22</td>
+                            </tr>
+                            <tr>
+                                <td class="date-slot">23</td>
+                                <td class="date-slot">24</td>
+                                <td class="date-slot">25</td>
+                                <td class="date-slot">26</td>
+                                <td class="date-slot">27</td>
+                                <td class="date-slot">28</td>
+                                <td class="date-slot">29</td>
+                            </tr>
+                            <tr>
+                                <td class="date-slot">30</td>
+                                <td class="disabled">1</td>
+                                <td class="disabled">2</td>
+                                <td class="disabled">3</td>
+                                <td class="disabled">4</td>
+                                <td class="disabled">5</td>
+                                <td class="disabled">6</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>          
+            <div class="visit-time">
+                <h3 class="selection-title bold-txt blue">Select a visit time:</h3>
+                <div class="time-slots">
+                    <button class="time-slot">08:30</button>
+                    <button class="time-slot">09:30</button>
+                    <button class="time-slot">10:30</button>
+                    <button class="time-slot">11:30</button>
+                    <button class="time-slot">12:30</button>
+                    <button class="time-slot">13:30</button>
+                    <button class="time-slot">14:30</button>
+                    <button class="time-slot">15:30</button>
+                    <button class="time-slot">16:30</button>
+                    <button class="time-slot">17:30</button>
+                    <button class="time-slot">18:30</button>
+                    <button class="time-slot">19:30</button>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="appointment-button blue-button">Schedule</button>
+        <div class="vet-image-container">
+            <img src="public/images/vet-info/oleksandra-kovalenko-info.svg" alt="Oleksandra Kovalenko" class="vet-photo">
+        </div>
+    </section>    
+
+    <section id="appointment-confirmation" class="confirmation-section">
+        <div class="confirmation-container">
+            <img src="public/icons/checkmark-icon.svg" alt="Checkmark Icon" class="confirmation-icon">
+            <h2 class="confirmation-title">Your appointment has been booked!</h2>
+            <p class="confirmation-message">You can go to your profile to view the details of your visit.</p>
+            <button type="button" class="confirm-button blue-button">My Profile</button>
+        </div>
+    </section>    
+</body>
+</html>
