@@ -1,0 +1,236 @@
+@use 'vars' as *;
+@use 'fonts' as *;
+@use 'mixin' as *;
+@use 'breakpoints' as *;
+@use 'keyframes' as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.mobile {
+    display: none;
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+}
+
+.top-bar {
+    background-color: $grey;
+    width: 100%; 
+    overflow: hidden; 
+
+    .top-bar_info {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+
+        @include adaptive-padding(7px, 10px, 25px, 15px);
+    }
+
+    .top-bar_address, .top-bar_schedule {
+        display: flex;
+        align-items: center;
+        
+        @include small {
+            margin-right: 10px;
+        }
+
+        @include large {
+            margin-right: 35px;
+        }
+
+        @include font-size(10px, 16px, 500, "Montserrat", $white);  
+    }
+
+    .top-bar_icon {
+        align-items: center;
+        @include adaptive-icon-size(25px, 15px);
+
+        @include small {
+            margin-right: 5px;
+        }
+
+        @include large {
+            margin-right: 10px;
+        }
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include adaptive-padding(14px, 11px, 80px, 15px);
+    background-color: $white;
+    position: relative;
+    box-shadow: 7px 7px 10px rgba(221, 232, 235, 0.25); 
+    z-index: 10; 
+}
+
+.logo {
+    img {
+        @include adaptive-image-size(200px, 100px);
+    }
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .menu-list {
+        display: flex;
+        justify-content: space-between;
+
+        .menu-item {
+            margin-right: 30px;
+            position: relative; 
+
+            .menu-link {
+                @include font(21px, 300, "Montserrat", $black);
+                position: relative;
+                padding-bottom: 5px;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 1px;
+                    background-color: transparent;
+                    transition: background-color 0.3s ease;
+                }
+
+                &:hover {
+                    color: $blue;
+
+                    &::after {
+                        background-color: $blue;
+                    }
+                }
+            }
+        }
+    }
+
+    @include small {
+        display: none;
+    }
+}
+
+.nav-button {
+    @include font(18px, 600, "Roboto", $black);
+    background-color: $yellow; 
+    width: 120px;  
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    color: $black;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+
+    @include small {
+        display: none;
+    }
+
+    &:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+    }
+}
+
+.burger-menu { 
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+
+    .burger-line {
+        width: 30px;  
+        height: 3px; 
+        background-color: $blue; 
+        margin: 3px 0;
+        border-radius: 100px; 
+    }
+    @include large {
+        display: none;  
+    }
+}
+ 
+.special-offers_section {
+    background-color: $white;
+    @include adaptive-padding(45px, 22px, 80px, 16px);
+
+    .special-offers_title {
+        @include font-size(32px, 64px, 700, "Montserrat", $blue);
+        text-align: center;
+        margin-bottom: 45px;
+
+        @include small {
+            margin-bottom: 22px;
+        }
+    }
+
+    .special-offers_row {
+        display: flex;
+        flex-direction: column;
+        gap: 17px;
+
+        @include small {
+            gap: 15px;
+        }
+    }
+
+    .special-offer_item {
+        z-index: 1;
+        .special-offer_title {
+            background-color: $light-blue;
+            color: $white;
+            display: inline-block;
+            @include adaptive-padding(10px, 8px, 11px, 7px);
+            @include font-size(17px, 23px, 700, "Montserrat", $white);
+            margin-bottom: 17px;
+
+            @include small {
+                margin-bottom: 10px;
+            }
+        }
+
+        .special-offer_description {
+            @include font-size(13px, 23px, 300, "Montserrat", $black);
+            line-height: 1.5;
+            text-align: left;
+        }
+    }
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom, rgba(224, 237, 239, 0), $pastel-blue); 
+    filter: blur(10px); 
+    pointer-events: none;
+}
