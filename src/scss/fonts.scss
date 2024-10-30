@@ -1,0 +1,32 @@
+@use 'breakpoints' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:wght@500;700&display=swap');
+
+@mixin font-size($mobile-size, $desktop-size, $weight, $font-family: "Montserrat", $color: null) {
+    font-family: $font-family, sans-serif;
+    font-weight: $weight;
+
+    @if $color != null {
+        color: $color;
+    }
+
+    @include small {
+        font-size: $mobile-size;
+    }
+
+    @include large {
+        font-size: $desktop-size;
+    }
+}
+
+@mixin font($size, $weight, $font-family: "Montserrat", $color: null) {
+    font-family: $font-family, sans-serif;
+    font-weight: $weight;
+    font-size: $size;
+    font-style: normal;
+
+    @if $color != null {
+        color: $color;
+    }
+}

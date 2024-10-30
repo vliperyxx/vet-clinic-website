@@ -1,0 +1,258 @@
+@use 'vars' as *;
+@use 'fonts' as *;
+@use 'mixin' as *;
+@use 'breakpoints' as *;
+@use 'keyframes' as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.mobile {
+    display: none;
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+}
+
+.top-bar {
+    background-color: $grey;
+    width: 100%; 
+    overflow: hidden; 
+
+    .top-bar_info {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+
+        @include adaptive-padding(7px, 10px, 25px, 15px);
+    }
+
+    .top-bar_address, .top-bar_schedule {
+        display: flex;
+        align-items: center;
+        
+        @include small {
+            margin-right: 10px;
+        }
+
+        @include large {
+            margin-right: 35px;
+        }
+
+        @include font-size(10px, 16px, 500, "Montserrat", $white);  
+    }
+
+    .top-bar_icon {
+        align-items: center;
+        @include adaptive-icon-size(25px, 15px);
+
+        @include small {
+            margin-right: 5px;
+        }
+
+        @include large {
+            margin-right: 10px;
+        }
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include adaptive-padding(14px, 11px, 80px, 15px);
+    background-color: $white;
+    position: relative;
+    box-shadow: 7px 7px 10px rgba(221, 232, 235, 0.25); 
+    z-index: 10; 
+}
+
+.logo {
+    img {
+        @include adaptive-image-size(200px, 100px);
+    }
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .menu-list {
+        display: flex;
+        justify-content: space-between;
+
+        .menu-item {
+            margin-right: 30px;
+            position: relative; 
+
+            .menu-link {
+                @include font(21px, 300, "Montserrat", $black);
+                position: relative;
+                padding-bottom: 5px;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 1px;
+                    background-color: transparent;
+                    transition: background-color 0.3s ease;
+                }
+
+                &:hover {
+                    color: $blue;
+
+                    &::after {
+                        background-color: $blue;
+                    }
+                }
+            }
+        }
+    }
+
+    @include small {
+        display: none;
+    }
+}
+
+.nav-button {
+    @include font(18px, 600, "Roboto", $black);
+    background-color: $yellow; 
+    width: 120px;  
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    color: $black;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+
+    @include small {
+        display: none;
+    }
+
+    &:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+    }
+}
+
+.burger-menu { 
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+
+    .burger-line {
+        width: 30px;  
+        height: 3px; 
+        background-color: $blue; 
+        margin: 3px 0;
+        border-radius: 100px; 
+    }
+    @include large {
+        display: none;  
+    }
+}
+
+.blog-section {
+    @include adaptive-padding(45px, 22px, 80px, 16px); 
+
+    .blog-title {
+        @include font-size(33px, 65px, 700, "Montserrat", $blue); 
+        margin-bottom: 45px;
+        @include small {
+            margin-bottom: 22px;
+        }
+        text-align: center;
+    }
+
+    .blog-row {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 35px; 
+
+        @include small {
+            flex-direction: column;
+            align-content: center;
+            gap: 20px;
+        }
+
+        .blog-post {
+            display: flex;
+            flex-direction: row;
+            background-color: $white;
+            overflow: hidden;
+            width: 100%;
+            max-width: 100%;
+            @include adaptive-size(1280px, 230px, 328px, 348px);
+
+            @include small {
+                flex-direction: column;
+            }
+
+            .blog-post_image {
+                @include adaptive-image-size(438px, 328px); 
+                border-radius: 20px;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            .blog-post_content {
+                @include adaptive-padding(0px, 10px, 35px, 0px);
+
+                .blog-post_title {
+                    @include font-size(17px, 32px, 600, "Montserrat", $black); 
+                    margin-bottom: 20px;
+                    @include small {
+                        margin-bottom: 5px;
+                    }
+                }
+
+                .blog-post_excerpt {
+                    @include font-size(13px, 19px, 400, "Montserrat", $black); 
+                    line-height: 1.5;
+                    margin-bottom: 20px;
+                    @include small {
+                        margin-bottom: 6px;
+                    }
+                }
+
+                .blog-post_link {
+                    @include font-size(14px, 17px, 600, "Montserrat", $blue); 
+                    cursor: pointer;
+                    border-bottom: 1px solid $blue;
+                    transition: color 0.3s ease;
+
+                    &:hover {
+                        color: darken($blue, 10%);
+                    }
+                }
+            }
+        }
+    }
+}
+

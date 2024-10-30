@@ -1,0 +1,377 @@
+@use 'vars' as *;
+@use 'fonts' as *;
+@use 'mixin' as *;
+@use 'breakpoints' as *;
+@use 'keyframes' as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.mobile {
+    display: none;
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+}
+
+.top-bar {
+    background-color: $grey;
+    width: 100%; 
+    overflow: hidden; 
+
+    .top-bar_info {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+
+        @include adaptive-padding(7px, 10px, 25px, 15px);
+    }
+
+    .top-bar_address, .top-bar_schedule {
+        display: flex;
+        align-items: center;
+        
+        @include small {
+            margin-right: 10px;
+        }
+
+        @include large {
+            margin-right: 35px;
+        }
+
+        @include font-size(10px, 16px, 500, "Montserrat", $white);  
+    }
+
+    .top-bar_icon {
+        align-items: center;
+        @include adaptive-icon-size(25px, 15px);
+
+        @include small {
+            margin-right: 5px;
+        }
+
+        @include large {
+            margin-right: 10px;
+        }
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include adaptive-padding(14px, 11px, 80px, 15px);
+    background-color: $white;
+    position: relative;
+    box-shadow: 7px 7px 10px rgba(221, 232, 235, 0.25); 
+    z-index: 10; 
+}
+
+.logo {
+    img {
+        @include adaptive-image-size(200px, 100px);
+    }
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .menu-list {
+        display: flex;
+        justify-content: space-between;
+
+        .menu-item {
+            margin-right: 30px;
+            position: relative; 
+
+            .menu-link {
+                @include font(21px, 300, "Montserrat", $black);
+                position: relative;
+                padding-bottom: 5px;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 1px;
+                    background-color: transparent;
+                    transition: background-color 0.3s ease;
+                }
+
+                &:hover {
+                    color: $blue;
+
+                    &::after {
+                        background-color: $blue;
+                    }
+                }
+            }
+        }
+    }
+
+    @include small {
+        display: none;
+    }
+}
+
+.nav-button {
+    @include font(18px, 600, "Roboto", $black);
+    background-color: $yellow; 
+    width: 120px;  
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    color: $black;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+
+    @include small {
+        display: none;
+    }
+
+    &:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+    }
+}
+
+.burger-menu { 
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+
+    .burger-line {
+        width: 30px;  
+        height: 3px; 
+        background-color: $blue; 
+        margin: 3px 0;
+        border-radius: 100px; 
+    }
+    @include large {
+        display: none;  
+    }
+}
+
+.contacts-section {
+    position: relative;
+    @include adaptive-padding(45px, 22px, 80px, 16px);
+
+    .contacts-title {
+        @include font-size(32px, 64px, 700, "Montserrat", $blue);
+        text-align: left;
+        margin-bottom: 45px;
+        @include small {
+            text-align: center;
+            margin-bottom: 22px;
+        }
+    }
+
+    .contacts-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        flex-direction: column;
+
+        @include small {
+            gap: 15px;
+        }
+    }
+
+    .contacts-info,
+    .contacts-social {
+        z-index: 2;
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+
+            .contact-icon {
+                @include adaptive-icon-size(32px, 26px);
+                margin-right: 13px;
+                @include small {
+                    margin-right: 10px;
+                }
+            }
+
+            a, p {
+                @include font-size(13px, 20px, 400, "Montserrat", $black);
+            }
+
+            .phone-numbers {
+                display: flex;
+                gap: 15px;
+
+                a {
+                    @include font-size(13px, 20px, 400, "Montserrat", $black);
+                    text-decoration: none;
+                }
+            }
+            
+            .contact-label {
+                @include font-size(10px, 17px, 300, "Montserrat", $black); 
+                display: block;
+            }            
+        }
+
+        .social-title {
+            @include font-size(13px, 20px, 600, "Montserrat", $blue);
+            text-decoration: underline;
+            margin-left: 60px;
+            margin-bottom: 27px;
+            @include small {
+                margin-bottom: 22px;
+            }
+        }
+
+        .social-list {
+            list-style: none;
+            padding: 0;
+
+            .social-item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+
+                @include small {
+                    margin-bottom: 15px;
+                }
+
+                .social-icon {
+                    @include adaptive-icon-size(42px, 36px);
+                    margin-right: 15px;
+                    transition: transform 0.3s ease;
+
+                    @include small {
+                        margin-right: 10px;
+                    }
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+
+                .social-link {
+                    display: flex;
+                    align-items: center;
+                    text-decoration: underline;
+                    @include font-size(13px, 18px, 400, "Montserrat", $black);
+                }
+            }
+        }
+    }
+
+    .contacts-map {
+        display: flex;
+        justify-content: center;
+        z-index: 2;
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+
+        &.desktop {
+            display: flex;
+
+            .map-image {
+                width: 410px;
+                height: 410px;
+                transform: translate(-50px, -390px);
+                border-radius: 50%;
+                border: 25px solid rgba($blue, 0.28);
+                object-fit: cover;
+            }
+
+            @include small {
+                display: none;
+            }
+        }
+
+        &.mobile {
+            z-index: 10;
+            margin: 0 -16px -22px -16px;
+            padding: 0;
+            display: none;
+
+            .map-image {
+                width: 100%;
+                height: auto;
+                border-radius: 0;
+                border: 10px solid rgba($blue, 0.28);
+                object-fit: cover;
+            }
+
+            @include small {
+                display: flex;
+            }
+        }
+    }
+
+    .contacts-image {
+        display: none;
+        position: relative;
+        z-index: 1;
+
+        @include large {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            max-width: 100%;
+            height: 760px;
+            object-fit: cover;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 1200px;
+                height: 800px;
+                background-color: #fff;
+                clip-path: ellipse(10% 60% at 0% 50%);
+            }
+        }
+    }
+
+    .contacts-line {
+        position: absolute;
+        z-index: 2;
+        top: 138px;
+        left: 0;
+        width: 740px;
+        height: 1px;
+        background-color: rgba(63, 166, 188, 1);
+
+        @include small {
+            top: 70px;
+            width: 100%;
+            left: 0;
+        }
+    }
+}

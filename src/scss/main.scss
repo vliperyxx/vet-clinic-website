@@ -1,0 +1,1199 @@
+@use 'vars' as *;
+@use 'fonts' as *;
+@use 'mixin' as *;
+@use 'breakpoints' as *;
+@use 'keyframes' as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.mobile {
+    display: none;
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+}
+
+.top-bar {
+    background-color: $grey;
+    width: 100%; 
+    overflow: hidden; 
+
+    .top-bar_info {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+
+        @include adaptive-padding(7px, 10px, 25px, 15px);
+    }
+
+    .top-bar_address, .top-bar_schedule {
+        display: flex;
+        align-items: center;
+        
+        @include small {
+            margin-right: 10px;
+        }
+
+        @include large {
+            margin-right: 35px;
+        }
+
+        @include font-size(10px, 16px, 500, "Montserrat", $white);  
+    }
+
+    .top-bar_icon {
+        align-items: center;
+        @include adaptive-icon-size(25px, 15px);
+
+        @include small {
+            margin-right: 5px;
+        }
+
+        @include large {
+            margin-right: 10px;
+        }
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include adaptive-padding(14px, 11px, 80px, 15px);
+    background-color: $white;
+    position: relative;
+    box-shadow: 7px 7px 10px rgba(221, 232, 235, 0.25); 
+    z-index: 10; 
+}
+
+.logo {
+    img {
+        @include adaptive-image-size(200px, 100px);
+    }
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .menu-list {
+        display: flex;
+        justify-content: space-between;
+
+        .menu-item {
+            margin-right: 30px;
+            position: relative; 
+
+            .menu-link {
+                @include font(21px, 300, "Montserrat", $black);
+                position: relative;
+                padding-bottom: 5px;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 1px;
+                    background-color: transparent;
+                    transition: background-color 0.3s ease;
+                }
+
+                &:hover {
+                    color: $blue;
+
+                    &::after {
+                        background-color: $blue;
+                    }
+                }
+            }
+        }
+    }
+
+    @include small {
+        display: none;
+    }
+}
+
+.nav-button {
+    @include font(18px, 600, "Roboto", $black);
+    background-color: $yellow; 
+    width: 120px;  
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    color: $black;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+
+    @include small {
+        display: none;
+    }
+
+    &:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+    }
+}
+
+.burger-menu { 
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+
+    .burger-line {
+        width: 30px;  
+        height: 3px; 
+        background-color: $blue; 
+        margin: 3px 0;
+        border-radius: 100px; 
+    }
+
+    @include large {
+        display: none;  
+    }
+}
+
+
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $white;
+    position: relative;
+
+    @include adaptive-padding(50px, 20px, 80px, 15px);
+
+    .hero-line {
+        position: absolute;
+        top: 340px; 
+        left: 0;
+        width: 894px;
+        height: 1px; 
+        background-color: rgba(63, 166, 188, 0.3); 
+
+        @include small {
+            top: 107px;
+            width: 100%;  
+            left: 0;  
+        }
+    }
+
+    .hero-circle {
+        position: absolute;
+        top: 10px;  
+        left: -353px;  
+        width: 650px;
+        height: 650px;
+        border: 1px solid rgba(63, 166, 188, 0.3);  
+        border-radius: 50%;  
+        background-color: transparent;  
+
+        @include small {
+            display: none;  
+        }
+    }
+    
+    .hero-content {
+        max-width: 600px;
+        z-index: 2;
+
+        h2.hero-subtitle {
+            @include font-size(14px, 28px, 800, "Montserrat", $light-blue);
+            margin-bottom: 20px;
+            @include small {
+                margin-bottom: 2px;
+            }
+        }
+
+        h1.hero-title {
+            @include font-size(45px, 96px, 800, "Montserrat", $blue); 
+            margin-bottom: 70px;
+            @include small {
+                margin-bottom: 35px;
+            }
+        }
+
+        p.hero-text {
+            @include font-size(12px, 22px, 400, "Montserrat", $black);
+            margin-bottom: 30px;
+            @include small {
+                margin-bottom: 17px;
+            }
+        }
+
+        .appointment-button {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            @include adaptive-button-size(320px, 85px, 185px, 50px);
+            @include adaptive-padding(30px, 20px, 15px, 15px);  
+            background-color: $blue;
+            color: $white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            @include font-size(11px, 21px, 500, "Montserrat", $white);
+
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+
+            &:hover {
+                transform: scale(1.05);
+            }
+
+            .button-icon {
+                margin-right: 2px; 
+                @include adaptive-icon-size(50px, 25px);
+            }
+
+            @include small {
+                margin: 0 auto;  
+                
+                &:hover {
+                    transform: none;  
+                }
+            }
+        }
+    }
+
+    .hero-image {
+        position: relative;
+        z-index: 2;
+
+        @include adaptive-image-size(570px, 300px);
+
+        img {
+            width: 100%;  
+        }
+
+        @include small {
+            margin-top: 20px;  
+        }
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(224, 237, 239, 0), $pastel-blue);
+        z-index: 0; 
+    }
+
+    @include small {
+        flex-direction: column;  
+        align-items: center;
+        text-align: center; 
+
+        .hero-content {
+            max-width: 100%;  
+        }
+    }
+}
+
+.auth-section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; 
+    padding: 70px 0; 
+    background-image: url('../public/images/background-image.png');  
+    @include small {
+        background-image: url('../public/images/background-image-mobile.png');  
+        padding: 30px 0; 
+    }
+    background-size: cover; 
+    background-position: center;  
+    background-repeat: no-repeat;
+
+    .auth-form {
+        position: relative; 
+        background-color: #ffffff;  
+        padding: 50px 40px 27px 40px;
+        @include small {
+            padding: 18px 15px 18px 15px;
+        }
+        border-radius: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        @include adaptive-size(457px, 685px, 280px, 370px);
+        width: 100%;
+        text-align: center;
+        z-index: 1;
+    
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70%;  
+            background: linear-gradient(to bottom, rgba(63, 166, 188, 0) 0%, rgba(63, 166, 188, 0.3) 100%);
+            border-radius: 0 0 20px 20px; 
+            pointer-events: none; 
+            z-index: -1;
+        }
+    }
+    
+
+    .logo-small {
+        display: block;
+        margin-bottom: 10px;
+        @include small {
+            margin-bottom: 5px;
+        }
+
+        img {
+            @include adaptive-image-size(185px, 90px);
+            height: auto;
+        }
+    }
+
+    .auth-title {
+        @include font-size(11px, 17px, 300, "Montserrat", $black);
+        margin-bottom: 60px;
+        @include small {
+            margin-bottom: 35px;
+        }
+    }
+
+    .input-group {
+        margin-bottom: 25px;
+        text-align: left;
+
+        label {
+            display: block;
+            @include font-size(11px, 19px, 400, "Montserrat", $black);
+            margin-bottom: 10px;
+            @include small {
+                margin-bottom: 5px;
+            }
+        }
+
+        input {
+            width: 100%;
+            @include adaptive-padding(20px, 7px, 16px, 12px);
+            @include adaptive-size(388px, 69px, 250px, 30px);
+            @include font-size(13px, 20px, 400, "Montserrat", $black);
+            border-radius: 20px;
+            border: 1px solid $blue; 
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+    }
+
+    .auth-button {
+        margin-top: 50px;
+        @include small {
+            margin-top: 40px;
+        }
+        width: 100%;
+        background-color: $blue;  
+        border: none;
+        border-radius: 20px;
+        display: flex;  
+        align-items: center;  
+        justify-content: center;
+        padding: 20px;
+        @include small {
+            padding: 10px;
+        }
+        @include adaptive-button-size(388px, 63px, 250px, 30px);
+        @include font-size(13px, 20px, 600, "Montserrat", $white);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
+
+        &:hover {
+            background-color: darken($blue, 10%); 
+        }
+    }
+
+    p {
+        margin-top: 70px;
+        @include small {
+            margin-top: 38px;
+        }
+        @include font-size(11px, 18px, 400, "Montserrat", $black);
+
+        .blue {
+            color: $blue;  
+            text-decoration: underline; 
+            text-decoration-thickness: 1px;  
+            text-underline-offset: 2px;  
+        }
+    }
+}
+
+.profile-section { 
+    position: relative;
+    display: flex;
+    min-height: 100vh;
+    @include small{
+        min-height: 80vh;
+    }
+    background-color: $white;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    @include small {
+        flex-direction: column;
+
+        .history-dropdown {
+            order: 1; 
+        }
+
+        .order-history_details {
+            order: 2; 
+        }
+    }
+    @include adaptive-padding(35px, 22px, 80px, 17px);
+
+    .profile-header {
+        background-color: $sky-blue;
+        height: 100px;
+        width: 100%;
+        @include small {
+            height: 59px;
+        }
+        @include adaptive-padding(26px, 15px, 35px, 16px);
+        border-radius: 20px;
+
+        .profile-title {
+            @include font-size(24px, 42px, 700, "Montserrat", $white);
+        }
+    }
+
+    .visit-history {
+        width: 100%;
+        margin-top: 42px;
+        padding: 0 35px;
+        @include small {
+            margin-top: 30px;
+            padding: 0 18px;
+        }
+
+        .visit-history_title {
+            display: block;
+            @include font-size(18px, 35px, 600, "Montserrat", $black);
+            margin-bottom: 20px;
+            @include small {
+                margin-bottom: 18px;
+            }
+        }
+
+        .visit-history_content {
+            display: flex;
+            flex-wrap: wrap;
+
+            .visit-history_filter {
+                margin-right: 38px;
+
+                .order-history_button {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    background-color: $light-blue;
+                
+                    @include adaptive-size(306px, 81px, 288px, 60px);
+                    @include font-size(16px, 20px, 600, "Montserrat", $white);
+                    padding: 15px;
+                    border: none;
+                    cursor: pointer;
+                    text-align: left;
+
+                    .arrow {
+                        display: flex;
+                        align-items: center;
+                
+                        img {
+                            @include adaptive-image-size(24px, 20px);
+                            height: auto;
+                        }
+
+                        @include small {
+                            transform: rotate(90deg);  
+                        }
+                    }
+
+                    &::after {
+                        margin-top: 36px;
+                        content: '';
+                        position: absolute;
+                        right: -75px;  
+                        top: 50%;  
+                        transform: translateY(-50%) rotate(90deg);  
+                        width: 150px;  
+                        height: 1px;   
+                        background-color: rgba(0, 0, 0, 0.2); 
+                        @include small {
+                            display: none;
+                        }
+                    } 
+                }
+            }
+
+            .order-history_details {
+                .order-history_title {
+                    margin-top: 47px;
+                    @include small {
+                        margin-top: 20px; 
+                    }
+                    @include font-size(18px, 28px, 600, "Montserrat", $black);
+                    margin-bottom: 20px;
+                    @include small {
+                        margin-bottom: 18px; 
+                    }
+                }
+
+                .service-type {
+                    @include font-size(13px, 17px, 500, "Montserrat", $black);
+                    margin-bottom: 10px;
+                }
+
+                .vet-name {
+                    @include font-size(15px, 20px, 700, "Montserrat", $blue);
+                    margin-bottom: 7px;
+                }
+
+                .appointment-info {
+                    display: flex;
+                    align-items: center;
+                    gap: 57px;
+
+                    .status-badge {
+                        background-color: $light-blue;
+                        @include font-size(11px, 13px, 500, "Montserrat", $white);
+                        padding: 5px 10px;
+                        border-radius: 20px;
+                    }
+
+                    .appointment-time {
+                        display: flex;
+                        align-items: center;
+                        @include font-size(13px, 17px, 400, "Montserrat", $black);
+                        white-space: nowrap;
+
+                        .profile-clock_icon {
+                            width: 20px;
+                            height: 20px;
+                            margin-right: 8px;
+                        }
+                    }
+                }
+            }
+
+            .history-dropdown {
+                margin-top: 42px;
+                padding: 12px 0px 12px 240px;
+                @include small {
+                    padding: 12px 0px 12px 0px;
+                    margin-top: 20px;
+                }
+                align-self: flex-start;
+
+                select {
+                    background-color: $light-blue;
+                    @include adaptive-size(206px, 42px, 288px, 42px);
+                    @include font-size(12px, 15px, 500, "Montserrat", $white);
+                    padding: 10px;
+                    border: none;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    appearance: none; 
+                    background-image: url('../public/icons/vector-arrow.svg'); 
+                    background-repeat: no-repeat;
+                    background-position: right 10px center; 
+                    background-size: 12px; 
+
+                    &:focus {
+                        outline: none;
+                        box-shadow: 0 0 0 2px rgba(63, 166, 188, 0.4); 
+                    }
+                }
+
+                option {
+                    background-color: $light-blue; 
+                    @include adaptive-size(206px, 42px, 288px, 42px);
+                    @include font-size(12px, 15px, 500, "Montserrat", $white);
+                    padding: 12px;
+
+                    &:hover,
+                    &:focus {
+                        background-color: darken($light-blue, 10%);
+                    }
+                }
+            }
+        }
+    }
+} 
+
+.appointment-section {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    padding: 57px 80px;
+    @include small {
+        padding: 37px 26px 0px 26px;
+    }
+    background-color: #fff;
+
+    @include small {
+        flex-direction: column;
+    }
+
+    .appointment-form_container {
+        z-index: 1;
+        max-width: 606px;
+        @include small {
+            max-width: 308px;
+        }
+        background-color: $white;
+        padding: 30px;
+        border-radius: 25px;
+        border: 1px solid $blue;
+
+        @include small {
+            max-width: 100%;
+            padding: 15px 8px;
+        }
+
+        .appointment-title {
+            @include font-size(18px, 36px, 700, "Montserrat", $blue);
+            text-align: center;
+            margin-bottom: 35px;
+            @include small {
+                margin-bottom: 22px;
+            }
+        }
+
+        .appointment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            @include small {
+                gap: 10px;
+            }
+
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                
+                label {
+                    @include font-size(13px, 19px, 400, "Montserrat", $grey);
+                    margin-bottom: 4px;
+                }
+
+                input {
+                    @include font-size(14px, 23px, 400, "Montserrat", $black);
+                    @include adaptive-size(537px, 70px, 292px, 40px);
+                    padding: 15px;
+                    border: 1px solid $light-blue;
+                    border-radius: 25px;
+                    outline: none;
+
+                    &::placeholder {
+                        color: #999;
+                    }
+                }
+            }
+
+            .appointment-button {
+                @include adaptive-size(250px, 70px, 155px, 38px);
+                @include font-size(15px, 25px, 600, "Montserrat", $white);
+                z-index: 1;
+                margin-top: 15px;
+                margin-bottom: 12px;
+                background-color: $blue;
+                border: none;
+                border-radius: 25px;
+                cursor: pointer;
+                align-self: center;
+                transition: background-color 0.3s ease;
+
+                &:hover {
+                    background-color: darken($blue, 10%);
+                }
+            }
+        }
+    }
+
+    .appointment-image {
+        position: relative;
+        z-index: 1;
+        .appointment-dog_image {
+            width: 100%;
+            @include adaptive-size(630px, 760px, 230px, 268px);
+        }
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 50%; 
+        background: linear-gradient(to right, rgba(224, 237, 239, 0), $pastel-blue);
+        z-index: 0; 
+        @include small {
+            top: auto;
+            bottom: 0;
+            left: 0;
+            width: 100%; 
+            height: 50%; 
+            background: linear-gradient(to bottom, rgba(224, 237, 239, 0), $pastel-blue);
+        }
+    }
+}
+
+.vet-selection {
+    @include adaptive-padding(40px, 22px, 80px, 17px);
+
+    .vet-selection_header {
+        margin-bottom: 40px;
+        @include small {
+            margin-bottom: 22px;
+        }
+
+        .vet-service_title {
+            @include font-size(13px, 25px, 600, "Montserrat", $blue);
+            margin-bottom: 40px;
+
+            @include small {
+                margin-bottom: 22px;
+            }
+
+        }
+
+        .vet-selection_title {
+            @include font-size(24px, 48px, 700, "Montserrat", $blue);
+            text-align: center;
+        }
+    }
+
+    .vet-list {
+        display: flex;
+        justify-content: space-between;
+        @include small {
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .vet-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            @include small {
+                max-width: 100%;
+            }
+
+            .vet-image {
+                width: 100%;
+                border-radius: 50%;
+                @include adaptive-image-size(380px, 250px);
+                margin-bottom: 30px;
+                transition: transform 0.6s ease;
+                cursor: pointer; 
+                @include small {
+                    margin-bottom: 15px;
+                }
+
+                &:hover {
+                    transform: scale(1.1); 
+                }
+            }
+
+            .vet-name, .vet-specialty {
+                cursor: pointer; 
+            }
+
+            .vet-name {
+                @include font-size(17px, 25px, 700, "Montserrat", $blue);
+                margin-bottom: 10px;
+                @include small {
+                    margin-bottom: 5px;
+                }
+            }
+
+            .vet-specialty {
+                @include font-size(11px, 18px, 400, "Montserrat", $grey);
+                text-align: center;
+            }
+        }
+    }
+}
+
+.vet-info_section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 30px 0px 30px 80px;
+    background-color: $white;
+    flex-direction: row; 
+
+    @include small {
+        flex-direction: column;
+        padding: 10px 0px; 
+
+        .vet-image-container {
+            order: 1; 
+            width: 100%; 
+            display: flex;
+            justify-content: flex-end; 
+        }
+
+        .vet-info_details {
+            order: 2; 
+            align-items: center; 
+            text-align: center;
+            padding: 0 30px; 
+        }
+    }
+
+    .vet-info_details {
+        .vet-info_header {
+            text-align: left;
+            margin-top: 40px;
+            margin-bottom: 40px;
+
+            @include small {
+                text-align: center;
+                margin-top: 20px;
+                margin-bottom: 30px;
+            }
+    
+            .vet-name {
+                @include font-size(24px, 48px, 700, "Montserrat", $blue);
+                margin-bottom: 15px;
+                @include small {
+                    margin-bottom: 10px;
+                }
+            }
+    
+            .vet-specialty {
+                padding: 5px 15px;
+                border-radius: 8px;
+                background-color: $yellow;
+                margin-bottom: 40px;
+                @include small {
+                    margin-bottom: 20px;
+                }
+                @include font-size(11px, 18px, 400, "Montserrat", $black);
+            }
+        }
+    
+        .vet-experience {
+            margin-bottom: 30px;
+            .experience-title {
+                @include font-size(15px, 24px, 700, "Montserrat", $blue);
+                margin-bottom: 10px;
+            }
+    
+            .experience-details {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                @include font-size(11px, 18px, 400, "Montserrat", $black);
+
+                .experience-icon {
+                    width: 12px;
+                    height: 8px;
+                }
+                margin-bottom: 30px;
+            }
+        }
+    
+        .appointment-selection {
+            display: flex;
+            gap: 45px;
+            @include small {
+                flex-direction: column;
+                gap: 20px;
+            }
+    
+            .visit-date,
+            .visit-time {
+                text-align: center;
+    
+                .selection-title {
+                    @include font-size(15px, 24px, 700, "Montserrat", $blue);
+                    margin-bottom: 15px;
+                }
+    
+                .calendar-container {
+                    @include table-style;
+                    width: 250px;
+                    margin: 0 auto;
+    
+                    .calendar-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 10px;
+    
+                        .prev-month,
+                        .next-month {
+                            cursor: pointer;
+                            background: transparent;
+                            border: none;
+                            @include font-size(14px, 18px, 400, "Montserrat", $blue);
+                        }
+
+                        .calendar-month {
+                            @include font-size(13px, 17px, 400, "Montserrat", $blue);
+                        }
+                    } 
+    
+                    .calendar {
+                        width: 100%;
+                        border-collapse: collapse;
+                        table-layout: fixed;
+    
+                        th, td {
+                            padding: 8px;
+                            cursor: pointer;
+                            transition: background-color 0.3s ease;
+    
+                            &.date-slot:hover,
+                            &.selected {
+                                background-color: lighten($blue, 35%);
+                            }
+                        }
+    
+                        th {
+                            @include font-size(10px, 10px, 400, "Montserrat", $black);
+                        }
+    
+                        td {
+                            text-align: center;
+                            @include font-size(13px, 17px, 400, "Montserrat", $black);
+                        }
+    
+                        .disabled {
+                            color: $grey;
+                            cursor: not-allowed;
+                        }
+                    }
+                }
+    
+                .time-slots {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 8px;
+    
+                    .time-slot {
+                        padding: 8px;
+                        border-radius: 8px;
+                        border: 1px solid $blue;
+                        background-color: transparent;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        text-align: center;
+                        @include font-size(15px, 16px, 500, "Montserrat", $blue);
+    
+                        &:hover,
+                        &.selected {
+                            background-color: lighten($blue, 35%);
+                        }
+                    }
+                    @include small {
+                        padding: 0px 20px;
+                
+                        .time-slot {
+                            padding: 8px; 
+                        }
+                    }
+                }
+            }
+        }
+
+        .appointment-button {
+            @include adaptive-size(250px, 70px, 155px, 38px);
+            @include font-size(15px, 25px, 600, "Montserrat", $white);
+            background-color: $blue;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            align-self: center;
+            margin-top: 30px;
+            @include small {
+                margin-top: 20px;
+            }
+            transition: background-color 0.3s ease;
+    
+            &:hover {
+                background-color: darken($blue, 10%);
+            }
+        }
+    }
+    .vet-image-container {
+        max-width: 100%;
+        height: auto;
+        opacity: 0; 
+        transform: translateX(100px); 
+        animation: slideIn 1.2s ease forwards; 
+
+        @include small {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .vet-photo {
+            width: 100%;
+            border-radius: 0px;
+            width: 670px;
+            @include small {
+                width: 290px;
+            }
+        }
+    }
+}
+
+.error-section {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    @include adaptive-size(454px, 273px, 250px, 167px);
+    @include adaptive-padding(27px, 17px, 103px, 45px);
+    background-color: $white;
+    border-radius: 25px;
+    border: 1px solid rgba(63, 166, 188, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    .error-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .error-icon {
+        @include adaptive-icon-size(60px, 24px);
+        margin-bottom: 17px;
+
+        @include small {
+            margin-bottom: 10px;
+        }
+    }
+
+    .error-title {
+        @include font-size(17px, 27px, 600, "Montserrat", $black);
+        margin-bottom: 8px;
+
+        @include small {
+            margin-bottom: 5px;
+        }
+    }
+
+    .error-message {
+        @include font-size(13px, 18px, 400, "Montserrat", $black);
+        margin-bottom: 25px;
+    }
+
+    .confirm-button {
+        @include adaptive-button-size(212px, 55px, 113px, 32px);
+        border-radius: 25px;
+        background-color: $blue;
+        @include font-size(15px, 25px, 600, "Montserrat", $white);
+        border: none;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+}
+
+.confirmation-section {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    @include adaptive-size(454px, 273px, 250px, 213px);
+    @include adaptive-padding(29px, 17px, 38px, 21px);
+    background-color: $white;
+    border-radius: 25px;
+    border: 1px solid rgba(63, 166, 188, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    .confirmation-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .confirmation-icon {
+        @include adaptive-icon-size(60px, 24px);
+        margin-bottom: 16px;
+
+        @include small {
+            margin-bottom: 10px;
+        }
+    }
+
+    .confirmation-title {
+        @include font-size(17px, 20px, 600, "Montserrat", $black);
+        margin-bottom: 8px;
+
+        @include small {
+            margin-bottom: 5px;
+        }
+    }
+
+    .confirmation-message {
+        @include font-size(13px, 13px, 400, "Montserrat", $black);
+        margin-bottom: 22px;
+        @include small {
+            margin-bottom: 25px;
+        }
+    }
+
+    .confirm-button {
+        @include adaptive-button-size(212px, 55px, 113px, 32px);
+        border-radius: 25px;
+        background-color: $blue;
+        @include font-size(15px, 25px, 600, "Montserrat", $white);
+        border: none;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+}

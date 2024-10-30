@@ -1,0 +1,70 @@
+@use 'breakpoints' as *;
+@use 'vars' as *;
+
+@mixin adaptive-padding($padding-vertical-desktop, $padding-vertical-mobile, $padding-horizontal-desktop, $padding-horizontal-mobile) {
+    @include small {
+        padding: $padding-vertical-mobile $padding-horizontal-mobile;
+    }
+
+    @include large {
+        padding: $padding-vertical-desktop $padding-horizontal-desktop;
+    }
+}
+
+@mixin adaptive-image-size($desktop-size, $mobile-size) {
+    @include small {
+        max-width: $mobile-size;
+    }
+
+    @include large {
+        max-width: $desktop-size;
+    }
+}
+
+@mixin adaptive-button-size($desktop-width, $desktop-height, $mobile-width, $mobile-height) {
+    @include large {
+        width: $desktop-width;
+        height: $desktop-height;
+    }
+
+    @include small {
+        width: $mobile-width;
+        height: $mobile-height;
+    }
+}
+
+@mixin adaptive-size($desktop-width, $desktop-height, $mobile-width, $mobile-height) {
+    @include large {
+        width: $desktop-width;
+        height: $desktop-height;
+    }
+
+    @include small {
+        width: $mobile-width;
+        height: $mobile-height;
+    }
+}
+
+@mixin adaptive-icon-size($desktop-size, $mobile-size) {
+    @include large {
+        width: $desktop-size;
+        height: $desktop-size;
+    }
+
+    @include small {
+        width: $mobile-size;
+        height: $mobile-size;
+    }
+}
+
+@mixin table-style {
+    border: 1px solid $light-blue;
+    border-radius: none;
+    overflow: hidden;
+
+    th, td {
+        padding: 15px;
+        text-align: center;
+        border: 1px solid $light-blue;
+    }
+}

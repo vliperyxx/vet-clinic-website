@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts - Pet Life</title>
     <link rel="icon" type="image/x-icon" href="public/icons/favicon.svg">
+    <link rel="stylesheet" href="scss/contacts.scss">
 </head>
 <body>
     <div class="top-bar">
@@ -49,8 +50,10 @@
             <div class="contacts-info">
                 <div class="contact-item">
                     <img src="public/icons/contacts/phone-call-icon.svg" alt="Phone Icon" class="contact-icon">
-                    <a href="tel:+380673580967">(380) 067 358 0967</a>
-                    <a href="tel:+380445236352">(380) 044 523 6352</a>
+                    <div class="phone-numbers">
+                        <a href="tel:+380673580967">(380) 067 358 0967</a>
+                        <a href="tel:+380445236352">(380) 044 523 6352</a>
+                    </div>
                 </div>
                 <div class="contact-item">
                     <img src="public/icons/contacts/map-icon.svg" alt="Location Icon" class="contact-icon">
@@ -58,7 +61,7 @@
                 </div>
                 <div class="contact-item">
                     <img src="public/icons/contacts/clock-icon.svg" alt="Clock Icon" class="contact-icon">
-                    <p>Working hours:<br> Monday - Sunday: 8:30 AM – 9:00 PM (No days off)</p>
+                    <p>Working hours:<br><span class="contact-label">Monday - Sunday: 8:30 AM – 9:00 PM (No days off)</span></p>
                 </div>
             </div>
             <div class="contacts-social">
@@ -90,15 +93,22 @@
                     </li>
                 </ul>
             </div>
-            <div class="contacts-map">
+            <div class="contacts-map desktop">
                 <a href="https://www.google.com/maps/place/Kyiv,+9+Khreshchatyk+St/" target="_blank">
-                    <img src="public/images/contacts/clinic-location.svg" alt="Map showing clinic location" class="map-image">
+                    <img src="public/images/contacts/clinic-location-desktop.svg" alt="Map showing clinic location" class="map-image">
+                </a>
+            </div>
+            <div class="contacts-map mobile">
+                <a href="https://www.google.com/maps/place/Kyiv,+9+Khreshchatyk+St/" target="_blank">
+                    <img src="public/images/contacts/clinic-location.png" alt="Map showing clinic location" class="map-image">
                 </a>
             </div>
             <div class="contacts-image desktop">
                 <img src="public/images/contacts/dog-with-doc.svg" alt="Dog Image" class="dog-image">
             </div>
         </div>
+
+        <div class="contacts-line"></div>
     </main>
 </body>
 </html>
