@@ -1,0 +1,184 @@
+@use 'vars' as *;
+@use 'fonts' as *;
+@use 'mixin' as *;
+@use 'breakpoints' as *;
+@use 'keyframes' as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.mobile {
+    display: none;
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+}
+
+.auth-section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; 
+    padding: 70px 0; 
+    background-image: url('../public/images/background-image.png');  
+    @include small {
+        background-image: url('../public/images/background-image-mobile.png');  
+        padding: 30px 0; 
+    }
+    background-size: cover; 
+    background-position: center;  
+    background-repeat: no-repeat;
+
+    .auth-form {
+        position: relative; 
+        background-color: #ffffff;  
+        padding: 50px 40px 27px 40px;
+        @include small {
+            padding: 18px 15px 18px 15px;
+        }
+        border-radius: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        @include adaptive-size(457px, 685px, 280px, 370px);
+        width: 100%;
+        text-align: center;
+        z-index: 1;
+    
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70%;  
+            background: linear-gradient(to bottom, rgba(63, 166, 188, 0) 0%, rgba(63, 166, 188, 0.3) 100%);
+            border-radius: 0 0 20px 20px; 
+            pointer-events: none; 
+            z-index: -1;
+        }
+    }
+    
+
+    .logo-small {
+        display: block;
+        margin-bottom: 10px;
+        @include small {
+            margin-bottom: 5px;
+        }
+
+        img {
+            @include adaptive-image-size(185px, 90px);
+            height: auto;
+        }
+    }
+
+    .auth-title {
+        @include font-size(11px, 17px, 300, "Montserrat", $black);
+        margin-bottom: 60px;
+        @include small {
+            margin-bottom: 35px;
+        }
+    }
+
+    .input-group {
+        margin-bottom: 25px;
+        text-align: left;
+
+        label {
+            display: block;
+            @include font-size(11px, 19px, 400, "Montserrat", $black);
+            margin-bottom: 10px;
+            @include small {
+                margin-bottom: 5px;
+            }
+        }
+
+        input {
+            width: 100%;
+            @include adaptive-padding(20px, 7px, 16px, 12px);
+            @include adaptive-size(388px, 69px, 250px, 30px);
+            @include font-size(13px, 20px, 400, "Montserrat", $black);
+            border-radius: 20px;
+            border: 1px solid $blue; 
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .toggle-password {
+            position: absolute;
+            top: 60%;
+            right: 45px;
+            @include small {
+                top: 58%;
+                right: 25px;
+                top: 58%;
+            }
+            transform: translateY(-50%);
+            cursor: pointer;
+            @include font-size(11px, 18px, 400, "Montserrat", $blue);
+            user-select: none;
+        }
+    }
+
+    .auth-button {
+        margin-top: 50px;
+        @include small {
+            margin-top: 40px;
+        }
+        width: 100%;
+        background-color: $blue;  
+        border: none;
+        border-radius: 20px;
+        display: flex;  
+        align-items: center;  
+        justify-content: center;
+        padding: 20px;
+        @include small {
+            padding: 10px;
+        }
+        @include adaptive-button-size(388px, 63px, 250px, 30px);
+        @include font-size(13px, 20px, 600, "Montserrat", $white);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
+
+        &:hover {
+            background-color: darken($blue, 10%); 
+        }
+    }
+
+    p {
+        margin-top: 70px;
+        @include small {
+            margin-top: 38px;
+        }
+        @include font-size(11px, 18px, 400, "Montserrat", $black);
+
+        .blue {
+            color: $blue;  
+            text-decoration: underline; 
+            text-decoration-thickness: 1px;  
+            text-underline-offset: 2px;  
+        }
+    }
+}

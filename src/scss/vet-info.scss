@@ -1,0 +1,599 @@
+@use 'vars' as *;
+@use 'fonts' as *;
+@use 'mixin' as *;
+@use 'breakpoints' as *;
+@use 'keyframes' as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.mobile {
+    display: none;
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+}
+
+.top-bar {
+    background-color: $grey;
+    width: 100%; 
+    overflow: hidden; 
+
+    .top-bar_info {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+
+        @include adaptive-padding(7px, 10px, 25px, 15px);
+    }
+
+    .top-bar_address, .top-bar_schedule {
+        display: flex;
+        align-items: center;
+        
+        @include small {
+            margin-right: 10px;
+        }
+
+        @include large {
+            margin-right: 35px;
+        }
+
+        @include font-size(10px, 16px, 500, "Montserrat", $white);  
+    }
+
+    .top-bar_icon {
+        align-items: center;
+        @include adaptive-icon-size(25px, 15px);
+
+        @include small {
+            margin-right: 5px;
+        }
+
+        @include large {
+            margin-right: 10px;
+        }
+    }
+}
+
+
+.header {
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include adaptive-padding(14px, 11px, 80px, 15px);
+    background-color: $white;
+    position: relative;
+    box-shadow: 7px 7px 10px rgba(221, 232, 235, 0.25); 
+    z-index: 10; 
+
+    .menu.desktop,
+    .nav-button.desktop {
+        @include small {
+            display: none;  
+        }
+    }
+}
+
+.logo {
+    img {
+        @include adaptive-image-size(200px, 100px);
+    }
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .menu-list {
+        display: flex;
+        justify-content: space-between;
+
+        .menu-item {
+            margin-right: 30px;
+            position: relative; 
+
+            .menu-link {
+                @include font(21px, 300, "Montserrat", $black);
+                position: relative;
+                padding-bottom: 5px;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 1px;
+                    background-color: transparent;
+                    transition: background-color 0.3s ease;
+                }
+
+                &:hover {
+                    color: $blue;
+
+                    &::after {
+                        background-color: $blue;
+                    }
+                }
+            }
+        }
+    }
+
+    @include small {
+        display: none;
+    }
+}
+
+.nav-button {
+    @include font(18px, 600, "Roboto", $black);
+    background-color: $yellow; 
+    width: 120px;  
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    color: $black;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+
+    @include small {
+        display: none;
+    }
+
+    &:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+    }
+}
+
+.burger-menu { 
+    display: none;
+    cursor: pointer;
+
+    @include small {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .burger-line {
+        width: 30px;  
+        height: 3px; 
+        background-color: $blue; 
+        margin: 3px 0;
+        border-radius: 100px; 
+    }
+}
+
+.mobile-menu {
+    position: fixed; 
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 26.2%);  
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);  
+    z-index: 999;
+    border: 1px solid $blue; 
+    margin-top: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.3s ease;
+
+    &.visible {
+        opacity: 1;
+        visibility: visible;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    
+    .nav-button {
+        display: block;
+        @include font(18px, 600, "Roboto", $black);
+        background-color: $yellow;
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 0px;
+        border-bottom: 1px solid $blue; 
+        text-align: center;
+    }
+
+    .menu-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    
+        .menu-item {
+            width: 100%; 
+            padding: 10px 0;
+            text-align: center;
+            position: relative;
+    
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0; 
+                left: 0;
+                width: 100%;
+                height: 1px;
+                background-color: $blue;
+            }
+            
+            .menu-link {
+                @include font(18px, 400, "Montserrat", $black);
+                padding: 10px;
+                text-align: center;
+    
+                &:hover {
+                    color: $blue;
+                }
+            }
+        }
+        .menu-item:last-child::after {
+            display: none;
+        }
+    }    
+}
+
+.vet-info_section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 30px 0px 30px 80px;
+    background-color: $white;
+    flex-direction: row; 
+
+    @include small {
+        flex-direction: column;
+        padding: 10px 0px; 
+
+        .vet-image-container {
+            order: 1; 
+            width: 100%; 
+            display: flex;
+            justify-content: flex-end; 
+        }
+
+        .vet-info_details {
+            order: 2; 
+            align-items: center; 
+            text-align: center;
+            padding: 0 30px; 
+        }
+    }
+
+    .vet-info_details {
+        .vet-info_header {
+            text-align: left;
+            margin-top: 40px;
+            margin-bottom: 40px;
+
+            @include small {
+                text-align: center;
+                margin-top: 20px;
+                margin-bottom: 30px;
+            }
+    
+            .vet-name {
+                @include font-size(24px, 48px, 700, "Montserrat", $blue);
+                margin-bottom: 15px;
+                @include small {
+                    margin-bottom: 10px;
+                }
+            }
+    
+            .vet-specialty {
+                padding: 5px 15px;
+                border-radius: 8px;
+                background-color: $yellow;
+                margin-bottom: 40px;
+                @include small {
+                    margin-bottom: 20px;
+                }
+                @include font-size(11px, 18px, 400, "Montserrat", $black);
+            }
+        }
+    
+        .vet-experience {
+            margin-bottom: 30px;
+            .experience-title {
+                @include font-size(15px, 24px, 700, "Montserrat", $blue);
+                margin-bottom: 10px;
+            }
+    
+            .experience-details {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                margin-bottom: 30px;
+            
+                @include font-size(11px, 18px, 400, "Montserrat", $black);
+            
+                .experience-icon {
+                    width: 12px;
+                    height: 12px; 
+                    display: inline-block;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    
+        .appointment-selection {
+            display: flex;
+            gap: 45px;
+            @include small {
+                flex-direction: column;
+                gap: 20px;
+            }
+    
+            .visit-date,
+            .visit-time {
+                text-align: center;
+    
+                .selection-title {
+                    @include font-size(15px, 24px, 700, "Montserrat", $blue);
+                    margin-bottom: 15px;
+                }
+    
+                .calendar-container {
+                    @include table-style;
+                    width: 250px;
+                    margin: 0 auto;
+    
+                    .calendar-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 10px;
+    
+                        .prev-month,
+                        .next-month {
+                            cursor: pointer;
+                            background: transparent;
+                            border: none;
+                            @include font-size(14px, 18px, 400, "Montserrat", $blue);
+                        }
+
+                        .calendar-month {
+                            @include font-size(13px, 17px, 400, "Montserrat", $blue);
+                        }
+                    } 
+    
+                    .calendar {
+                        width: 100%;
+                        border-collapse: collapse;
+                        table-layout: fixed;
+    
+                        th, td {
+                            padding: 8px;
+                            cursor: pointer;
+                            transition: background-color 0.3s ease;
+    
+                            &.date-slot:hover,
+                            &.selected {
+                                background-color: lighten($blue, 35%);
+                            }
+                        }
+    
+                        th {
+                            @include font-size(10px, 10px, 400, "Montserrat", $black);
+                        }
+    
+                        td {
+                            text-align: center;
+                            @include font-size(13px, 17px, 400, "Montserrat", $black);
+                        }
+    
+                        .disabled {
+                            color: $grey;
+                            cursor: not-allowed;
+                        }
+                    }
+                }
+    
+                .time-slots {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 8px;
+    
+                    .time-slot {
+                        padding: 8px;
+                        border-radius: 8px;
+                        border: 1px solid $blue;
+                        background-color: transparent;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        text-align: center;
+                        @include font-size(15px, 16px, 500, "Montserrat", $blue);
+    
+                        &:hover,
+                        &.selected {
+                            background-color: lighten($blue, 35%);
+                        }
+                    }
+                    @include small {
+                        padding: 0px 20px;
+                
+                        .time-slot {
+                            padding: 8px; 
+                        }
+                    }
+                }
+            }
+        }
+
+        .schedule-button {
+            @include adaptive-size(250px, 70px, 155px, 38px);
+            @include font-size(15px, 25px, 600, "Montserrat", $white);
+            background-color: $blue;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            align-self: center;
+            margin-top: 30px;
+            @include small {
+                margin-top: 20px;
+            }
+            transition: background-color 0.3s ease;
+    
+            &:hover {
+                background-color: darken($blue, 10%);
+            }
+        }
+    }
+    .vet-image-container {
+        max-width: 100%;
+        height: auto;
+        opacity: 0; 
+        transform: translateX(100px); 
+        animation: slideIn 1.2s ease forwards; 
+
+        @include small {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .vet-photo {
+            width: 100%;
+            border-radius: 0px;
+            width: 670px;
+            @include small {
+                width: 290px;
+            }
+        }
+    }
+}
+
+.schedule-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999; 
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.3s ease;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.confirmation-section {
+    position: fixed;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    @include adaptive-size(454px, 273px, 250px, 213px);
+    @include adaptive-padding(29px, 17px, 38px, 21px);
+    background-color: $white;
+    border-radius: 25px;
+    border: 1px solid rgba(63, 166, 188, 1);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.3s ease;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .confirmation-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .confirmation-icon {
+        @include adaptive-icon-size(60px, 24px);
+        margin-bottom: 16px;
+
+        @include small {
+            margin-bottom: 10px;
+        }
+    }
+
+    .confirmation-title {
+        @include font-size(17px, 20px, 600, "Montserrat", $black);
+        margin-bottom: 8px;
+
+        @include small {
+            margin-bottom: 5px;
+        }
+    }
+
+    .confirmation-message {
+        @include font-size(13px, 13px, 400, "Montserrat", $black);
+        margin-bottom: 22px;
+        @include small {
+            margin-bottom: 25px;
+        }
+    }
+
+    .confirm-button {
+        @include adaptive-button-size(212px, 55px, 113px, 32px);
+        border-radius: 25px;
+        background-color: $blue;
+        @include font-size(15px, 25px, 600, "Montserrat", $white);
+        border: none;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    margin-top: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998; 
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.3s ease;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
