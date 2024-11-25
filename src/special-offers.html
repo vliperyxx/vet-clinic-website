@@ -25,7 +25,7 @@
         <a class="logo" href="/">
             <img src="public/images/logo.svg" alt="Pet Life Logo" class="logo-image">
         </a>
-        <nav class="menu">
+        <nav class="menu desktop">
             <ul class="menu-list">
                 <li class="menu-item"><a href="index.html" class="menu-link">Main</a></li>
                 <li class="menu-item"><a href="blog.html" class="menu-link">Blog</a></li>
@@ -35,14 +35,26 @@
                 <li class="menu-item"><a href="contacts.html" class="menu-link">Contacts</a></li>
             </ul>
         </nav>
-        <button class="nav-button blue-button">Login</button>
+        <button class="nav-button">Login</button>
     
         <div class="burger-menu mobile">
             <span class="burger-line"></span>
             <span class="burger-line"></span>
             <span class="burger-line"></span>
         </div>
-    </header> 
+    </header>     
+
+    <div class="mobile-menu">
+        <button class="nav-button">Login</button>
+        <ul class="menu-list">
+            <li class="menu-item"><a href="index.html" class="menu-link">Main</a></li>
+            <li class="menu-item"><a href="blog.html" class="menu-link">Blog</a></li>
+            <li class="menu-item"><a href="services.html" class="menu-link">Services</a></li>
+            <li class="menu-item"><a href="special-offers.html" class="menu-link">Special Offers</a></li>
+            <li class="menu-item"><a href="prices.html" class="menu-link">Prices</a></li>
+            <li class="menu-item"><a href="contacts.html" class="menu-link">Contacts</a></li>
+        </ul>
+    </div>
 
     <main class="special-offers_section">
         <h2 class="special-offers_title bold-txt blue">Special Offers</h2>
@@ -77,5 +89,9 @@
             </div>
         </div>
     </main>
+
+    <div class="overlay"></div>
+    
+    <script src="scripts/main.js" defer></script>
 </body>
 </html>
