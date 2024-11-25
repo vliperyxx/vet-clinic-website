@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Pet Life</title>
+    <link rel="icon" type="image/x-icon" href="public/icons/favicon.svg">
+    <link rel="stylesheet" href="scss/register.scss">
+</head>
+
+<body>
+    <main class="auth-section">
+        <div class="auth-form">
+            <a href="/" class="logo-small">
+                <img src="public/images/logo-small.svg" alt="Pet Life Logo" class="logo-image">
+            </a>
+            <h2 class="auth-title">Enter your information to create account</h2>
+            <form>
+                <div class="input-group">
+                    <label for="reg-username">Username</label>
+                    <input type="text" id="reg-username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="input-group">
+                    <label for="reg-password">Password</label>
+                    <input type="password" id="reg-password" name="password" placeholder="Enter your password" required>
+                    <span id="togglePassword" class="toggle-password">Show</span>
+                </div>
+                <button type="submit" class="auth-button blue-button">Create Account</button>
+                <p>Already have an account? <a href="login.html"><span class="blue">Log in</span></a></p>
+            </form>
+        </div>
+    </main>
+
+    <script src="scripts/main.js" defer></script>
+</body>
+</html>

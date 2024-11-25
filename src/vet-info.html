@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterinarian Info - Pet Life</title>
+    <link rel="icon" type="image/x-icon" href="public/icons/favicon.svg">
+    <link rel="stylesheet" href="scss/vet-info.scss">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar_info">
+            <p class="top-bar_address">
+                <img src="public/icons/top-bar/location-icon.svg" alt="Location Icon" class="top-bar_icon">
+                <span>Kyiv, 9 Khreshchatyk St.</span>
+            </p>
+            <p class="top-bar_schedule">
+                <img src="public/icons/top-bar/clock-icon.svg" alt="Clock Icon" class="top-bar_icon">
+                <span>AM – 9:00 PM, no days off</span> 
+            </p>
+        </div>
+    </div>
+
+    <header class="header"> 
+        <a class="logo" href="/">
+            <img src="public/images/logo.svg" alt="Pet Life Logo" class="logo-image">
+        </a>
+        <nav class="menu">
+            <ul class="menu-list">
+                <li class="menu-item"><a href="index.html" class="menu-link">Main</a></li>
+                <li class="menu-item"><a href="blog.html" class="menu-link">Blog</a></li>
+                <li class="menu-item"><a href="services.html" class="menu-link">Services</a></li>
+                <li class="menu-item"><a href="special-offers.html" class="menu-link">Special Offers</a></li>
+                <li class="menu-item"><a href="prices.html" class="menu-link">Prices</a></li>
+                <li class="menu-item"><a href="contacts.html" class="menu-link">Contacts</a></li>
+            </ul>
+        </nav>
+        <button class="nav-button blue-button">Login</button>
+    
+        <div class="burger-menu mobile">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </div>
+    </header> 
+
+    <main class="vet-info_section">
+        <div class="vet-info_details">
+            <div class="vet-info_header">
+                <h2 class="vet-name bold-txt blue">[Vet Name]</h2>
+                <span class="vet-specialty yellow-badge">[Specialty]</span>
+            </div>
+            
+            <div class="vet-experience">
+                <h3 class="experience-title bold-txt blue">Experience:</h3>
+                <div class="experience-details">
+                    <span class="experience-icon">
+                        <img src="public/icons/circle-icon.svg" alt="Circle Icon">
+                    </span>
+                    <span class="experience-text"></span>
+                </div>
+            </div>            
+            
+            <div class="appointment-selection">
+                <div class="visit-date">
+                    <h3 class="selection-title bold-txt blue">Select a visit date:</h3>
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <button class="prev-month" aria-label="Previous Month">&lt;</button>
+                            <span class="calendar-month">September</span>
+                            <button class="next-month" aria-label="Next Month">&gt;</button>
+                        </div>
+                        <table class="calendar">
+                            <thead>
+                                <tr>
+                                    <th>Sun</th>
+                                    <th>Mon</th>
+                                    <th>Tue</th>
+                                    <th>Wed</th>
+                                    <th>Thu</th>
+                                    <th>Fri</th>
+                                    <th>Sat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="disabled">26</td>
+                                    <td class="disabled">27</td>
+                                    <td class="disabled">28</td>
+                                    <td class="disabled">29</td>
+                                    <td class="disabled">30</td>
+                                    <td class="disabled">31</td>
+                                    <td class="date-slot">1</td>
+                                </tr>        
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="visit-time">
+                    <h3 class="selection-title bold-txt blue">Select a visit time:</h3>
+                    <div class="time-slots">
+                        <button class="time-slot">08:30</button>
+                        <button class="time-slot">09:30</button>
+                        <button class="time-slot">10:30</button>
+                        <button class="time-slot">11:30</button>
+                        <button class="time-slot">12:30</button>
+                        <button class="time-slot">13:30</button>
+                        <button class="time-slot">14:30</button>
+                        <button class="time-slot">15:30</button>
+                        <button class="time-slot">16:30</button>
+                        <button class="time-slot">17:30</button>
+                        <button class="time-slot">18:30</button>
+                        <button class="time-slot">19:30</button>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="button" class="schedule-button blue-button">Schedule</button>
+        </div>
+    
+        <div class="vet-image-container">
+            <img src="public/images/vet-info/oleksandra-kovalenko-info.svg" alt="Oleksandra Kovalenko" class="vet-photo" data-vet="Oleksandra Kovalenko" style="display: none;">
+            <img src="public/images/vet-info/nataliia-shevchenko-info.svg" alt="Nataliia Shevchenko" class="vet-photo" data-vet="Nataliia Shevchenko" style="display: none;">
+            <img src="public/images/vet-info/viktoriia-ivanchuk-info.svg" alt="Viktoriia Ivanchuk" class="vet-photo" data-vet="Viktoriia Ivanchuk" style="display: none;">
+            <img src="public/images/vet-info/mykola-romanenko-info.svg" alt="Mykola Romanenko" class="vet-photo" data-vet="Mykola Romanenko" style="display: none;">
+            <img src="public/images/vet-info/iryna-kovalenko-info.svg" alt="Iryna Kovalenko" class="vet-photo" data-vet="Iryna Kovalenko" style="display: none;">
+            <img src="public/images/vet-info/natalia-marchenko-info.svg" alt="Nataliia Marchenko" class="vet-photo" data-vet="Nataliia Marchenko" style="display: none;">
+            <img src="public/images/vet-info/andrii-melnyk-info.svg" alt="Andrii Melnyk" class="vet-photo" data-vet="Andrii Melnyk" style="display: none;">
+            <img src="public/images/vet-info/yuliia-hrytsenko-info.svg" alt="Yuliia Hrytsenko" class="vet-photo" data-vet="Yuliia Hrytsenko" style="display: none;">
+            <img src="public/images/vet-info/dmytro-bondarenko-info.svg" alt="Dmytro Bondarenko" class="vet-photo" data-vet="Dmytro Bondarenko" style="display: none;">
+            <img src="public/images/vet-info/anastasiia-berezhko-info.svg" alt="Anastasiia Berezhko" class="vet-photo" data-vet="Anastasiia Berezhko" style="display: none;">
+            <img src="public/images/vet-info/alina-radchenko-info.svg" alt="Alina Radchenko" class="vet-photo" data-vet="Alina Radchenko" style="display: none;">
+            <img src="public/images/vet-info/yurii-staryk-info.svg" alt="Yurii Staryk" class="vet-photo" data-vet="Yurii Staryk" style="display: none;">
+            <img src="public/images/vet-info/sofiia-dovhal-info.svg" alt="Sofiia Dovhal" class="vet-photo" data-vet="Sofiia Dovhal" style="display: none;">
+            <img src="public/images/vet-info/mykola-leshchenko-info.svg" alt="Mykola Leshchenko" class="vet-photo" data-vet="Mykola Leshchenko" style="display: none;">
+            <img src="public/images/vet-info/olha-tyshchenko-info.svg" alt="Olha Tyshchenko" class="vet-photo" data-vet="Olha Tyshchenko" style="display: none;">
+            <img src="public/images/vet-info/liliia-kovalchuk-info.svg" alt="Liliia Kovalchuk" class="vet-photo" data-vet="Liliia Kovalchuk" style="display: none;">
+            <img src="public/images/vet-info/viktoriia-havryliuk-info.svg" alt="Viktoriia Havryliuk" class="vet-photo" data-vet="Viktoriia Havryliuk" style="display: none;">
+            <img src="public/images/vet-info/volodymyr-chumak-info.svg" alt="Volodymyr Chumak" class="vet-photo" data-vet="Volodymyr Chumak" style="display: none;">
+            <img src="public/images/vet-info/oleksandr-myronenko-info.svg" alt="Oleksandr Myronenko" class="vet-photo" data-vet="Oleksandr Myronenko" style="display: none;">
+            <img src="public/images/vet-info/bohdan-poltavets-info.svg" alt="Bohdan Poltavets" class="vet-photo" data-vet="Bohdan Poltavets" style="display: none;">
+            <img src="public/images/vet-info/ihor-klymenchuk-info.svg" alt="Ihor Klymenchuk" class="vet-photo" data-vet="Ihor Klymenchuk" style="display: none;">
+            <img src="public/images/vet-info/diana-horbachuk-info.svg" alt="Diana Horbachuk" class="vet-photo" data-vet="Diana Horbachuk" style="display: none;">
+            <img src="public/images/vet-info/serhii-lysenko-info.svg" alt="Serhii Lysenko" class="vet-photo" data-vet="Serhii Lysenko" style="display: none;">
+            <img src="public/images/vet-info/nataliia-levchuk-info.svg" alt="Nataliia Levchuk" class="vet-photo" data-vet="Nataliia Levchuk" style="display: none;">
+            <img src="public/images/vet-info/kateryna-vasylenko-info.svg" alt="Kateryna Vasylenko" class="vet-photo" data-vet="Kateryna Vasylenko" style="display: none;">
+            <img src="public/images/vet-info/andrii-zadorozhnyi-info.svg" alt="Andrii Zadorozhnyi" class="vet-photo" data-vet="Andrii Zadorozhnyi" style="display: none;">
+            <img src="public/images/vet-info/maksym-savchenko-info.svg" alt="Maksym Savchenko" class="vet-photo" data-vet="Maksym Savchenko" style="display: none;">
+        </div>        
+    </main>
+
+    <div class="schedule-overlay"></div>
+
+    <section id="appointment-confirmation" class="confirmation-section">
+        <div class="confirmation-container">
+            <img src="public/icons/checkmark-icon.svg" alt="Checkmark Icon" class="confirmation-icon">
+            <h2 class="confirmation-title">Your appointment has been booked!</h2>
+            <p class="confirmation-message">You can go to your profile to view the details of your visit.</p>
+            <button type="button" class="confirm-button blue-button">My Profile</button>
+        </div>
+    </section>
+    
+    <div class="overlay"></div>
+    
+    <script src="scripts/main.js" defer></script>    
+</body>
+</html>
